@@ -1,3 +1,5 @@
+require 'sinatra'
+
 def caesar_cipher(str,num)
     alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
     last_index = alphabet.length-1
@@ -22,15 +24,20 @@ def caesar_cipher(str,num)
             ans.push(w)
         end
     end
-    puts ans.join("")
+    return ans.join("")
 end
 
-puts "String input: "
+get '/' do
+    word = params['word-to-encode']
+    num = params['number']
+    result = ""
+    show_result = false
 
-cip_str = gets.chomp
+    if word.nil? == false && word != ''
+        caesar_cipher(word,num.to_i)
+        show_result = true
+    end
 
-puts "Integer input: "
+    erb :index, :locals => { :result => result, :show_result => show_result }
+end
 
-cip_int = gets.chomp
-
-caesar_cipher(cip_str,cip_int)

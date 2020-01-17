@@ -1,0 +1,15 @@
+<html>
+    <head></head>
+    <body>
+        <form>
+            <input type='text' name='word-to-encode'>
+            <input type='number' name='number'>
+            <input type='Submit' value='encode'>
+        </form>
+
+        <p>Submit a word to crypt with caesar cipher.</p>
+        <% if show_result %>
+            <p>Crypted: <%= result %> </p>
+        <% end %>
+    </body>
+</html>
